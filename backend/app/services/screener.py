@@ -152,6 +152,8 @@ def screen_catalog(
 
     for i in range(n):
         for j in range(i + 1, n):
+            if sat_records[i]["norad_id"] == sat_records[j]["norad_id"]:
+                continue
             s1 = sat_records[i]
             s2 = sat_records[j]
             pairs_checked += 1

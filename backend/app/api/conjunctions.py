@@ -188,7 +188,7 @@ async def optimize_conjunction(
         update(ConjunctionEvent)
         .where(ConjunctionEvent.id == event_id)
         .values(
-            optimal_burn_epoch=best.get("burn_epoch"),
+            optimal_burn_epoch=best.get("burn_epoch").replace(tzinfo=None) if best.get("burn_epoch") else None,
             burn_rtn_ms=best.get("burn_rtn_ms"),
             burn_delta_v_ms=best.get("delta_v_ms"),
             pc_post_burn=best.get("pc_post_burn"),
